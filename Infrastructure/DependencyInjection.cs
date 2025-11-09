@@ -21,7 +21,8 @@ namespace Infrastructure
             // EF Core (In-Memory Database-ஐ உதாரணத்திற்காக பயன்படுத்துகிறேன்)
             //SQL Server-க்கு:
             services.AddDbContext<AppDbContext>(options =>
-               options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
+         b => b.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)));
 
             //services.AddDbContext<AppDbContext>(options =>
             //    options.UseInMemoryDatabase("CleanArchDb"));
